@@ -17,26 +17,6 @@ export class TasksService {
     return this.tasksRepository.getTasks(filterDto);
   }
 
-  // getAllTasks(): Task[] {
-  //   return this.tasks;
-  // }
-  // getTasksWithFilters(filterDto: GetTasksFilterDto): Task[] {
-  //   const { status, search } = filterDto;
-  //   let tasks = this.getAllTasks();
-  //   if (status) {
-  //     tasks = tasks.filter((t) => t.status === status);
-  //   }
-  //   if (search) {
-  //     tasks = tasks.filter((t) => {
-  //       if (t.title.includes(search) || t.description.includes(search)) {
-  //         return true;
-  //       }
-  //       return false;
-  //     });
-  //   }
-  //   return tasks;
-  // }
-
   async getTaskById(id: string): Promise<Task> {
     const found = await this.tasksRepository.findOne(id);
 
@@ -46,11 +26,6 @@ export class TasksService {
 
     return found;
   }
-
-  // deleteTaskById(id: string): void {
-  //   const found = this.getTaskById(id);
-  //   this.tasks = this.tasks.filter((t: Task) => t.id !== id);
-  // }
 
   async deleteTaskById(id: string): Promise<void> {
     const result = await this.tasksRepository.delete(id);
